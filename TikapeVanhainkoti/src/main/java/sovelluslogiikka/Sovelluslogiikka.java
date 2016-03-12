@@ -18,19 +18,13 @@ public class Sovelluslogiikka {
     }
 
     public boolean kaynnista() {
-
-        boolean sqlite = true;
-        if (this.tietokannanNimi.contains("postgres")) {
-            sqlite = false;
-        }
-
         try {
             this.database = new Database(tietokannanNimi);
-            this.tkAlustaja = new TKAlustaja(database, sqlite);
+            this.tkAlustaja = new TKAlustaja(database);
             boolean yhteysToimii = tkAlustaja.kokeileYhteys();
 //            System.out.println("yhteys: " + yhteysToimii);
             if (yhteysToimii) {
-                tkAlustaja.luoTaulut();
+                tkAlustaja.luoTaulut(!this.tietokannanNimi.contains("postgres"));
             }
             this.alueDao = new AlueDAO(database);
             this.ketjuDao = new KetjuDAO(database);
