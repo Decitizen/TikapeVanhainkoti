@@ -116,7 +116,7 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
                 + "LEFT JOIN Alue "
                 + "ON Alue.Id = Ketju.AlueId "
                 + "WHERE Ketju.Id = ? "
-                + "GROUP BY Ketju.Id "
+                + "GROUP BY Ketju.Id, an "
                 + "ORDER BY MAX(Viesti.pvm) DESC;");
 
         stmt.setInt(1, kid);
