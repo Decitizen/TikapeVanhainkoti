@@ -3,8 +3,6 @@ package kayttoliittyma;
 import java.util.*;
 import sovelluslogiikka.Sovelluslogiikka;
 import spark.ModelAndView;
-import spark.Request;
-import spark.Response;
 import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
