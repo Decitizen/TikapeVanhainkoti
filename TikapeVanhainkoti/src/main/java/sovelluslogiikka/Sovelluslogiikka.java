@@ -28,7 +28,7 @@ public class Sovelluslogiikka {
             this.database = new Database(tietokannanNimi);
             this.tkAlustaja = new TKAlustaja(database, sqlite);
             boolean yhteysToimii = tkAlustaja.kokeileYhteys();
-            System.out.println("yhteys: " + yhteysToimii);
+//            System.out.println("yhteys: " + yhteysToimii);
             if (yhteysToimii) {
                 tkAlustaja.luoTaulut();
             }

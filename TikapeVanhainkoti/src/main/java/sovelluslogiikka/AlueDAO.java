@@ -131,7 +131,11 @@ public class AlueDAO implements Dao<Integer, Alue> {
               + "AND alue.id = ?;");  
         stmt.setInt(1, alueId);
         ResultSet rs = stmt.executeQuery();
-        int lkm = rs.getInt("Maara");
+        
+        int lkm = 0;
+        while (rs.next()){
+            lkm = rs.getInt("Maara");
+        }
         
         rs.close();
         stmt.close();
