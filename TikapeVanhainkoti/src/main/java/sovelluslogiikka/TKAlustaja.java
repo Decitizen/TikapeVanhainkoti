@@ -51,7 +51,7 @@ public class TKAlustaja {
                 + "(id " + alustus + " PRIMARY KEY AUTOINCREMENT, "
                 + "viesti text NOT NULL, "
                 + "nimimerkki varchar(50) NOT NULL, "
-                + "pvm datetime NOT NULL, "
+                + "pvm bigint NOT NULL, "
                 + "ketjuId integer NOT NULL, "
                 + "FOREIGN KEY (KetjuId) REFERENCES Ketju(Id));");
         taulunLuominen("CREATE INDEX idx_ketjuId ON Ketju (id), "
