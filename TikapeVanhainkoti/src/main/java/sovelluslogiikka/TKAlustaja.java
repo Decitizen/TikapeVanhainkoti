@@ -38,17 +38,17 @@ public class TKAlustaja {
 
         //taulu "Alue" luonti
         taulunLuominen("CREATE TABLE Alue "
-                + "(id " + alustus + " PRIMARY KEY AUTOINCREMENT, "
+                + "(id " + alustus + " PRIMARY KEY, "
                 + "nimi varchar(100) NOT NULL UNIQUE);");
         //taulu "Ketju" luonti
         taulunLuominen("CREATE TABLE Ketju "
-                + "(id " + alustus + " PRIMARY KEY AUTOINCREMENT, "
+                + "(id " + alustus + " PRIMARY KEY, "
                 + "nimi varchar(100) NOT NULL, "
                 + "alueId integer NOT NULL, "
                 + "FOREIGN KEY (AlueId) REFERENCES Alue(Id));");
         //taulu "Viesti" luonti, Nimimerkin kanssa.
         taulunLuominen("CREATE TABLE Viesti "
-                + "(id " + alustus + " PRIMARY KEY AUTOINCREMENT, "
+                + "(id " + alustus + " PRIMARY KEY, "
                 + "viesti text NOT NULL, "
                 + "nimimerkki varchar(50) NOT NULL, "
                 + "pvm bigint NOT NULL, "
