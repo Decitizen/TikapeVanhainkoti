@@ -155,7 +155,7 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
                 + "LEFT JOIN Alue "
                 + "ON Alue.Id = Ketju.AlueId "
                 + "WHERE Ketju.AlueId = ? "
-                + "GROUP BY Ketju.Id "
+                + "GROUP BY Ketju.Id, an "
                 + "ORDER BY MAX(Viesti.pvm) DESC "
                 + "LIMIT " + lkmPerSivu + " "
                 + "OFFSET " + (lkmPerSivu * (sivuNumero - 1)) + ";");
