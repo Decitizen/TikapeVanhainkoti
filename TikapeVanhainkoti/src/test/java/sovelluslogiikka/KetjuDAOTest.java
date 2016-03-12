@@ -61,8 +61,8 @@ public class KetjuDAOTest {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        TKAlustaja tkalustaja = new TKAlustaja(database, true);
-        tkalustaja.luoTaulut();
+        TKAlustaja tkalustaja = new TKAlustaja(database);
+        tkalustaja.luoTaulut(true);
         luoAlueet();
     }
     
@@ -289,8 +289,8 @@ public class KetjuDAOTest {
     
     public void poistaKetjutJaViestit() {
         poistaTietokanta();
-        TKAlustaja tkalustaja = new TKAlustaja(database, true);
-        tkalustaja.luoTaulut();
+        TKAlustaja tkalustaja = new TKAlustaja(database);
+        tkalustaja.luoTaulut(true);
         luoAlueet();
     }
     
