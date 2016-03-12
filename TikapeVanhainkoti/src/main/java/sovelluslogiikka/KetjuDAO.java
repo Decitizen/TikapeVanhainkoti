@@ -30,7 +30,6 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
 
     @Override
     public int add(Ketju ketju) throws SQLException {
-        //palautetaan luodun ketjun id
 
         muodostaYhteys();
         PreparedStatement stmt = yhteys.prepareStatement(
@@ -195,6 +194,7 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
         int lkm = rs.getInt("Maara");
         
         rs.close();
+        stmt.close();
         suljeYhteys();
         
         return lkm;
