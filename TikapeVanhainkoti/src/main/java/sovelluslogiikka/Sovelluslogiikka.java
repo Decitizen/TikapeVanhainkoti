@@ -150,10 +150,10 @@ public class Sovelluslogiikka {
         return -1;
     }
 
-    public List<Viesti> haeSivuViesteja(int ketjuid, int sivunumero) {
+    public List<Viesti> haeSivuViesteja(int ketjuid, int sivunumero, int viestejaPerSivu) {
         List<Viesti> lista;
         try {
-            lista = viestiDao.getOnePage(ketjuid, 10, sivunumero);
+            lista = viestiDao.getOnePage(ketjuid, viestejaPerSivu, sivunumero);
             return lista;
         } catch (SQLException se) {
             System.out.println(se.getMessage());
@@ -161,10 +161,10 @@ public class Sovelluslogiikka {
         return null;
     }
 
-    public List<Ketju> haeSivuKetjuja(int alueid, int sivunumero) {
+    public List<Ketju> haeSivuKetjuja(int alueid, int sivunumero, int ketjujaPerSivu) {
         List<Ketju> lista;
         try {
-            lista = ketjuDao.getOnePage(alueid, 10, sivunumero);
+            lista = ketjuDao.getOnePage(alueid, ketjujaPerSivu, sivunumero);
             return lista;
         } catch (SQLException se) {
             System.out.println(se.getMessage());

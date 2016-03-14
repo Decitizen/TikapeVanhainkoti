@@ -230,7 +230,7 @@ public class Webbikayttoliittyma {
         int sivumaara = ((sovelluslogiikka.haeKetjujenLkm(alueid) - 1) / 10 + 1);
         ArrayList<Integer> sivunumerot = laskeSivunumerot(sivumaara);
 
-        map.put("ketjut", sovelluslogiikka.haeSivuKetjuja(alueid, sivu));
+        map.put("ketjut", sovelluslogiikka.haeSivuKetjuja(alueid, sivu, 10));
         map.put("alue", sovelluslogiikka.haeAlue(alueid));
 
         map.put("sivumaara", (sivumaara));
@@ -247,7 +247,7 @@ public class Webbikayttoliittyma {
         int sivumaara = ((sovelluslogiikka.haeViestienLkm(ketjuid) - 1) / 10 + 1);
         ArrayList<Integer> sivunumerot = laskeSivunumerot(sivumaara);
 
-        map.put("viestit", sovelluslogiikka.haeSivuViesteja(ketjuid, sivu));
+        map.put("viestit", sovelluslogiikka.haeSivuViesteja(ketjuid, sivu, 10));
         map.put("ketju", sovelluslogiikka.haeKetju(ketjuid));
         map.put("sivumaara", (sivumaara));
         map.put("sivu", sivu);
