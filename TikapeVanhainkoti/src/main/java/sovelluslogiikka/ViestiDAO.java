@@ -59,27 +59,27 @@ public class ViestiDAO implements Dao<Integer, Viesti> {
 
     @Override
     public List<Viesti> getAll(Integer ketjuId) throws SQLException {
-        muodostaYhteys();
-        PreparedStatement stmt = yhteys.prepareStatement(
-                "SELECT * "
-                + "FROM Viesti WHERE KetjuId = ? ORDER BY pvm;");
-        stmt.setInt(1, ketjuId);
-        ResultSet rs = stmt.executeQuery();
+//        muodostaYhteys();
+//        PreparedStatement stmt = yhteys.prepareStatement(
+//                "SELECT * "
+//                + "FROM Viesti WHERE KetjuId = ? ORDER BY pvm;");
+//        stmt.setInt(1, ketjuId);
+//        ResultSet rs = stmt.executeQuery();
         List<Viesti> viestit = new LinkedList<>();
-
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String viesti = rs.getString("viesti");
-            String nimimerkki = rs.getString("nimimerkki");
-
-            Timestamp pvmTimestamp = new Timestamp(rs.getLong("pvm"));
-            LocalDateTime pvm = pvmTimestamp.toLocalDateTime();
-            Viesti uusiViesti = new Viesti(id, viesti, nimimerkki, pvm, ketjuId);
-            viestit.add(uusiViesti);
-        }
-        rs.close();
-        stmt.close();
-        suljeYhteys();
+//
+//        while (rs.next()) {
+//            int id = rs.getInt("id");
+//            String viesti = rs.getString("viesti");
+//            String nimimerkki = rs.getString("nimimerkki");
+//
+//            Timestamp pvmTimestamp = new Timestamp(rs.getLong("pvm"));
+//            LocalDateTime pvm = pvmTimestamp.toLocalDateTime();
+//            Viesti uusiViesti = new Viesti(id, viesti, nimimerkki, pvm, ketjuId);
+//            viestit.add(uusiViesti);
+//        }
+//        rs.close();
+//        stmt.close();
+//        suljeYhteys();
         return viestit;
     }
 

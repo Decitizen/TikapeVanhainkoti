@@ -76,10 +76,10 @@ public class Sovelluslogiikka {
 
     public List<Ketju> haeKetjut(int alue_id) {
         List<Ketju> ketjut = new LinkedList<>();
-        try {
-            ketjut = ketjuDao.getAll(alue_id);
-        } catch (SQLException ex) {
-        }
+//        try {
+//            ketjut = ketjuDao.getAll(alue_id);
+//        } catch (SQLException ex) {
+//        }
         return ketjut;
     }
 
@@ -94,10 +94,10 @@ public class Sovelluslogiikka {
 
     public List<Viesti> haeViestit(int ketju_id) {
         List<Viesti> viestit = new LinkedList<>();
-        try {
-            viestit = viestiDao.getAll(ketju_id);
-        } catch (SQLException ex) {
-        }
+//        try {
+//            viestit = viestiDao.getAll(ketju_id);
+//        } catch (SQLException ex) {
+//        }
         return viestit;
     }
 

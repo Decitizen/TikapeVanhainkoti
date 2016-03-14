@@ -68,38 +68,38 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
 
     @Override
     public List<Ketju> getAll(Integer alueId) throws SQLException {
-        muodostaYhteys();
+//        muodostaYhteys();
         List<Ketju> ketjut = new LinkedList<>();
-        PreparedStatement stmt = yhteys.prepareStatement(
-                "SELECT Ketju.Id AS kid, Ketju.alueid AS kaid, "
-                + "Alue.nimi AS an, Ketju.nimi AS kn, "
-                + "MAX(Viesti.pvm) AS pvm, COUNT(Viesti.id) AS maara "
-                + "FROM Ketju LEFT JOIN Viesti "
-                + "ON Ketju.Id = Viesti.KetjuId "
-                + "LEFT JOIN Alue "
-                + "ON Alue.Id = Ketju.AlueId "
-                + "WHERE Ketju.AlueId = ? "
-                + "GROUP BY Ketju.Id, an "
-                + "ORDER BY MAX(Viesti.pvm) DESC;");
-
-        stmt.setInt(1, alueId);
-        ResultSet rs = stmt.executeQuery();
-
-        while (rs.next()) {
-            int id = rs.getInt("kid");
-            String nimi = rs.getString("kn");
-            String alueNimi = rs.getString("an");
-            int maara = rs.getInt("maara");
-
-            Timestamp timestamp = new Timestamp(rs.getLong("pvm"));
-            LocalDateTime pvm = timestamp.toLocalDateTime();
-
-            ketjut.add(new Ketju(id, alueId, pvm, nimi, alueNimi, maara));
-
-        }
-        rs.close();
-        stmt.close();
-        suljeYhteys();
+//        PreparedStatement stmt = yhteys.prepareStatement(
+//                "SELECT Ketju.Id AS kid, Ketju.alueid AS kaid, "
+//                + "Alue.nimi AS an, Ketju.nimi AS kn, "
+//                + "MAX(Viesti.pvm) AS pvm, COUNT(Viesti.id) AS maara "
+//                + "FROM Ketju LEFT JOIN Viesti "
+//                + "ON Ketju.Id = Viesti.KetjuId "
+//                + "LEFT JOIN Alue "
+//                + "ON Alue.Id = Ketju.AlueId "
+//                + "WHERE Ketju.AlueId = ? "
+//                + "GROUP BY Ketju.Id, an "
+//                + "ORDER BY MAX(Viesti.pvm) DESC;");
+//
+//        stmt.setInt(1, alueId);
+//        ResultSet rs = stmt.executeQuery();
+//
+//        while (rs.next()) {
+//            int id = rs.getInt("kid");
+//            String nimi = rs.getString("kn");
+//            String alueNimi = rs.getString("an");
+//            int maara = rs.getInt("maara");
+//
+//            Timestamp timestamp = new Timestamp(rs.getLong("pvm"));
+//            LocalDateTime pvm = timestamp.toLocalDateTime();
+//
+//            ketjut.add(new Ketju(id, alueId, pvm, nimi, alueNimi, maara));
+//
+//        }
+//        rs.close();
+//        stmt.close();
+//        suljeYhteys();
         return ketjut;
     }
 
