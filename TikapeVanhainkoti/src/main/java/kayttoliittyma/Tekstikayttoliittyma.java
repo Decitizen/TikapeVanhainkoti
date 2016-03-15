@@ -65,7 +65,9 @@ public class Tekstikayttoliittyma {
         } else {
             // ei jaksa käsitellä virheitä
             int n = Integer.parseInt(p);
-            List<Ketju> ketjut = sovelluslogiikka.haeKetjut(n);
+            
+            // ei haeta kaikkia vaan vain 30 ensimmäistä
+            List<Ketju> ketjut = sovelluslogiikka.haeSivuKetjuja(n, 1, 30);
 
             // ketjut on tyhjä?
             System.out.println("Ketjut");
@@ -94,7 +96,10 @@ public class Tekstikayttoliittyma {
             sovelluslogiikka.luoKetju(otsikko, alue, nimim, viesti);
         } else {
             int n = Integer.parseInt(p);
-            List<Viesti> viestit = sovelluslogiikka.haeViestit(n);
+            
+            // haetaan vain 30 ensimmäistä
+            List<Viesti> viestit = sovelluslogiikka.haeSivuViesteja(n, 1, 30);
+            
             System.out.println("Ketjun viestit");
             for (Viesti v : viestit) {
                 System.out.println(v.getViesti() + " t. " + v.getNimimerkki());
