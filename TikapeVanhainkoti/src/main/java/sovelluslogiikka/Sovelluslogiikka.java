@@ -75,12 +75,7 @@ public class Sovelluslogiikka {
     }
 
     public List<Ketju> haeKetjut(int alue_id) {
-        List<Ketju> ketjut = new LinkedList<>();
-//        try {
-//            ketjut = ketjuDao.getAll(alue_id);
-//        } catch (SQLException ex) {
-//        }
-        return ketjut;
+        return haeSivuKetjuja(alue_id, 1, -1);
     }
 
     public Ketju haeKetju(int kid) {
@@ -93,12 +88,7 @@ public class Sovelluslogiikka {
     }
 
     public List<Viesti> haeViestit(int ketju_id) {
-        List<Viesti> viestit = new LinkedList<>();
-//        try {
-//            viestit = viestiDao.getAll(ketju_id);
-//        } catch (SQLException ex) {
-//        }
-        return viestit;
+        return haeSivuViesteja(ketju_id, 1, -1);
     }
 
     public boolean luoAlue(String nimi) {

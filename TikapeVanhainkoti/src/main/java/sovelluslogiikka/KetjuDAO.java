@@ -100,7 +100,7 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
 //        rs.close();
 //        stmt.close();
 //        suljeYhteys();
-        return ketjut;
+        return getOnePage(alueId, -1, 1);
     }
 
     @Override
@@ -146,8 +146,9 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
     public List<Ketju> getOnePage(Integer alueId, int lkmPerSivu, int sivuNumero) throws SQLException {
         muodostaYhteys();
         List<Ketju> ketjut = new LinkedList<>();
-        PreparedStatement stmt = yhteys.prepareStatement(
-                "SELECT Ketju.Id AS kid, Ketju.alueid AS kaid, "
+
+        String stmtString
+                = "SELECT Ketju.Id AS kid, Ketju.alueid AS kaid, "
                 + "Alue.nimi AS an, Ketju.nimi AS kn, "
                 + "MAX(Viesti.pvm) AS pvm, COUNT(Viesti.id) AS maara "
                 + "FROM Ketju LEFT JOIN Viesti "
@@ -156,11 +157,21 @@ public class KetjuDAO implements Dao<Integer, Ketju> {
                 + "ON Alue.Id = Ketju.AlueId "
                 + "WHERE Ketju.AlueId = ? "
                 + "GROUP BY Ketju.Id, an "
-                + "ORDER BY MAX(Viesti.pvm) DESC "
-                + "LIMIT " + lkmPerSivu + " "
-                + "OFFSET " + (lkmPerSivu * (sivuNumero - 1)) + ";");
+                + "ORDER BY MAX(Viesti.pvm) DESC ";
 
+        // lkm >= 0 palauttaa pyydetyn määrä, >0 kaikki
+        if (lkmPerSivu >= 0) {
+            stmtString += "LIMIT ? "
+                    + "OFFSET ? ";
+        }
+        stmtString +=  ";";
+
+        PreparedStatement stmt = yhteys.prepareStatement(stmtString);
         stmt.setInt(1, alueId);
+        if (lkmPerSivu >= 0) {
+            stmt.setInt(2, lkmPerSivu);
+            stmt.setInt(3, (lkmPerSivu * (sivuNumero - 1)));
+        }
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {

@@ -67,7 +67,7 @@ public class Tekstikayttoliittyma {
             int n = Integer.parseInt(p);
             
             // ei haeta kaikkia vaan vain 30 ensimmäistä
-            List<Ketju> ketjut = sovelluslogiikka.haeSivuKetjuja(n, 1, 30);
+            List<Ketju> ketjut = sovelluslogiikka.haeKetjut(n);
 
             // ketjut on tyhjä?
             System.out.println("Ketjut");
@@ -98,7 +98,7 @@ public class Tekstikayttoliittyma {
             int n = Integer.parseInt(p);
             
             // haetaan vain 30 ensimmäistä
-            List<Viesti> viestit = sovelluslogiikka.haeSivuViesteja(n, 1, 30);
+            List<Viesti> viestit = sovelluslogiikka.haeViestit(n);
             
             System.out.println("Ketjun viestit");
             for (Viesti v : viestit) {

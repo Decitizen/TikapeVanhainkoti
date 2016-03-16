@@ -17,7 +17,7 @@ public class Webbikayttoliittyma {
     public void kaynnista() {
 
         staticFileLocation("/public");
-        
+
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
 
@@ -37,6 +37,10 @@ public class Webbikayttoliittyma {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
+            if (alueid < 1 || sivu < 1) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
             HashMap map = haeAlue(alueid, sivu);
 
             return new ModelAndView(map, "alue");
@@ -50,6 +54,10 @@ public class Webbikayttoliittyma {
             try {
                 alueid = Integer.parseInt(req.params("id"));
             } catch (Exception e) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
+            if (alueid < 1 || sivu < 1) {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
@@ -119,6 +127,10 @@ public class Webbikayttoliittyma {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
+            if (ketjuid < 1 || sivu < 1) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
             HashMap map = haeKetju(ketjuid, sivu);
 
             return new ModelAndView(map, "ketju");
@@ -132,6 +144,10 @@ public class Webbikayttoliittyma {
                 ketjuid = Integer.parseInt(req.params("id"));
                 sivu = Integer.parseInt(req.params("sivu"));
             } catch (Exception e) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
+            if (ketjuid < 1 || sivu < 1) {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
@@ -167,6 +183,10 @@ public class Webbikayttoliittyma {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
+            if (ketjuid < 1 || sivu < 1) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
             String nimimerkki = req.queryParams("nimimerkki");
             String viesti = req.queryParams("viesti");
 
@@ -196,6 +216,10 @@ public class Webbikayttoliittyma {
             try {
                 ketjuid = Integer.parseInt(req.params("id"));
             } catch (Exception e) {
+                return new ModelAndView(virheOsoite(), "index");
+            }
+
+            if (ketjuid < 1 || sivu < 1) {
                 return new ModelAndView(virheOsoite(), "index");
             }
 
