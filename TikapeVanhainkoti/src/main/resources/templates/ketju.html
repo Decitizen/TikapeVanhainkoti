@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <ul class="pagination">
-                        <li th:each="i, iC : ${sivunumerot}" th:class="${(iC.index + 1)==sivu}? 'active'" ><a th:href="@{~/ketju/{kid}/{sivunro}(kid=${ketju.id}, sivunro=${i})}"><span th:text="${i}">0</span></a></li>
+                        <li th:each="i : ${#numbers.sequence(1, __${sivumaara}__)}" th:class="${(i)==sivu}? 'active'" ><a th:href="@{~/ketju/{kid}/{sivunro}(kid=${ketju.id}, sivunro=${i})}"><span th:text="${i}">0</span></a></li>
                     </ul>
                 </div>
                 <div class="col-xs-3 col-sm-2">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-xs-4 col-sm-2">
                     <ul class="pagination">
-                        <li th:each="i, iC : ${sivunumerot}" th:class="${(iC.index + 1)==sivu}? 'active'" ><a th:href="@{~/ketju/{kid}/{sivunro}(kid=${ketju.id}, sivunro=${i})}"><span th:text="${i}">0</span></a></li>
+                        <li th:each="i : ${#numbers.sequence(1, __${sivumaara}__)}" th:class="${(i)==sivu}? 'active'" ><a th:href="@{~/ketju/{kid}/{sivunro}(kid=${ketju.id}, sivunro=${i})}"><span th:text="${i}">0</span></a></li>
                     </ul>
                 </div>
                 <div class="col-xs-3 col-sm-2">
